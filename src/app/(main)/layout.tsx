@@ -16,7 +16,9 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
             <header className="flex h-16 shrink-0 items-center gap-2 px-4">
               <SidebarTrigger />
             </header>
-            <div className="flex flex-1 flex-col px-4">{children}</div>
+            <div className="flex h-full w-full flex-1 flex-col px-4">
+              {children}
+            </div>
           </main>
         </SidebarInset>
       </SidebarProvider>

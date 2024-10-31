@@ -34,6 +34,7 @@ import { Separator } from "./ui/separator";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import Link from "next/link";
 
 type Folder = {
   id: string;
@@ -112,10 +113,12 @@ const AppSidebar = () => {
                 <SidebarMenu>
                   {folders.map((folder) => (
                     <SidebarMenuItem key={folder.id}>
-                      <div className="flex cursor-pointer items-center gap-2 rounded-lg p-2 duration-100 hover:bg-muted">
-                        <Folder className="h-4 w-4" />
-                        <span>{folder.name}</span>
-                      </div>
+                      <Link href={`/folders/${folder.id}`}>
+                        <div className="flex cursor-pointer items-center gap-2 rounded-lg p-2 duration-100 hover:bg-muted">
+                          <Folder className="h-4 w-4" />
+                          <span>{folder.name}</span>
+                        </div>
+                      </Link>
                     </SidebarMenuItem>
                   ))}
                 </SidebarMenu>
