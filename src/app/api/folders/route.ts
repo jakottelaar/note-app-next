@@ -42,8 +42,9 @@ export async function GET(req: NextRequest) {
       },
     });
 
-    return Response.json({ content: { folders: folders } });
+    return Response.json({ content: { folders: folders } }, { status: 200 });
   } catch (error) {
-    return Response.json({ error: "Failed to fetch folders" }, { status: 500 });
+    console.error(error);
+    return Response.json({ error: "Failed to get folders" }, { status: 500 });
   }
 }
