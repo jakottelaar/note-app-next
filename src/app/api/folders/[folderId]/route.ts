@@ -4,14 +4,14 @@ import prisma from "../../../../../prisma/client";
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } },
+  { params }: { params: { folderId: string } },
 ) {
   try {
     const { userId } = await auth();
 
     const folder = await prisma.folder.findFirst({
       where: {
-        id: params.id,
+        id: params.folderId,
         userId: userId!,
       },
     });
