@@ -41,10 +41,10 @@ export async function POST(
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } },
+  { params }: { params: { folderId: string } },
 ) {
   try {
-    const folderId = params.id;
+    const folderId = params.folderId;
 
     const notes = await prisma.note.findMany({
       where: {
