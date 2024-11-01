@@ -3,7 +3,11 @@ import { Note } from "@prisma/client";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const NotePage = ({ params }: { params: { id: string; noteId: string } }) => {
+const NotePage = ({
+  params,
+}: {
+  params: Promise<{ id: string; noteId: string }>;
+}) => {
   const { id, noteId } = useParams();
   const [note, setNote] = useState<Note | null>(null);
 

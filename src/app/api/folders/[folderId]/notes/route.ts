@@ -10,10 +10,12 @@ const noteSchema = z.object({
 
 export async function POST(
   req: NextRequest,
-  { params }: { params: { folderId: string } },
+  { params }: { params: Promise<{ folderId: string }> },
 ) {
   try {
     const { userId } = await auth();
+
+    const { folderId } = await params;
 
     const body = await req.json();
 
@@ -26,7 +28,7 @@ export async function POST(
     const note = await prisma.note.create({
       data: {
         ...validation.data,
-        folderId: params.folderId,
+        folderId: folderId,
         userId: userId!,
       },
     });
@@ -41,10 +43,10 @@ export async function POST(
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { folderId: string } },
+  { params }: { params: Promise<{ folderId: string }> },
 ) {
   try {
-    const folderId = params.folderId;
+    const { folderId } = await params;
 
     const notes = await prisma.note.findMany({
       where: {

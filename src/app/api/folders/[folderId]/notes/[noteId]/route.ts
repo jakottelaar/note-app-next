@@ -4,14 +4,16 @@ import prisma from "../../../../../../../prisma/client";
 
 export async function GET(
   next: NextRequest,
-  { params }: { params: { folderId: string; noteId: string } },
+  { params }: { params: Promise<{ folderId: string; noteId: string }> },
 ) {
   try {
     const { userId } = await auth();
 
+    const { folderId, noteId } = await params;
+
     const note = await prisma.note.findUnique({
       where: {
-        id: params.noteId,
+        id: noteId,
       },
     });
 

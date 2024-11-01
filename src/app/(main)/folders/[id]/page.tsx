@@ -5,7 +5,11 @@ import { Plus } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const FoldersOverviewPage = ({ params }: { params: { id: string } }) => {
+const FoldersOverviewPage = ({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) => {
   const [notes, setNotes] = useState<Note[]>([]);
   const router = useRouter();
 
