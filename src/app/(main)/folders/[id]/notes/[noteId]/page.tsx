@@ -69,7 +69,7 @@ const NotePage = ({
         <LoaderCircle className="animate-spin" />
       ) : (
         <>
-          <h1>{note?.title}</h1>
+          <h1 className="mb-4 text-2xl">{note?.title}</h1>
           <EditorComp
             markdown={markdown}
             editorRef={editorRef}

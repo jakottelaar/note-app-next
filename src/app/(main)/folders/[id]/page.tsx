@@ -68,7 +68,7 @@ const FoldersOverviewPage = ({
           {notes.map((note: Note) => (
             <Card
               key={note.id}
-              className="flex cursor-pointer flex-col transition-all hover:shadow-md"
+              className="flex cursor-pointer flex-col transition-all hover:border-white"
               onClick={() => router.push(`/folders/${id}/notes/${note.id}`)}
             >
               <CardHeader>
